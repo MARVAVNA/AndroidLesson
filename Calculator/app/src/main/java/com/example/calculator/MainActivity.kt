@@ -118,6 +118,19 @@ class MainActivity : AppCompatActivity() {
                 return
             }
         }
+
+        if (text == ".") {
+            val pointCount = tvText.countSymbol('.')
+            if (pointCount == 2 || (pointCount == 1 && actionOperation == null)) return
+
+            if (tvText.isEmpty()) {
+                tv.text = "0${text}"
+                return
+            } else if (actionOperation != null && !tvText.last().isDigit()) {
+                tv.text = "${tvText}0${text}"
+                return
+            }
+        }
         tv.text = "${tvText}${text}"
     }
 
@@ -169,7 +182,6 @@ enum class Operation {
     }
 
     fun plus(textView: TextView, operation: Operation) {
-        println(this)
         val numbers = getNumbersFromTextView(textView, this)
 
         if (numbers != null) {
@@ -179,7 +191,6 @@ enum class Operation {
     }
 
     fun minus(textView: TextView, operation: Operation) {
-        println(this)
         val numbers = getNumbersFromTextView(textView, this)
 
         if (numbers != null) {
@@ -189,7 +200,6 @@ enum class Operation {
     }
 
     fun multi(textView: TextView, operation: Operation) {
-        println(this)
         val numbers = getNumbersFromTextView(textView, this)
 
         if (numbers != null) {
@@ -199,7 +209,6 @@ enum class Operation {
     }
 
     fun div(textView: TextView, operation: Operation) {
-        println(this)
         val numbers = getNumbersFromTextView(textView, this)
 
         if (numbers != null) {
@@ -214,12 +223,24 @@ enum class Operation {
         val sOperation = getOperation(operation)
 
         val numbers = textView.text.toString().split(sOperation)
-        println(textView.text)
-        println(sOperation)
         for (number in numbers) {
             if (number.isEmpty()) return null
         }
 
         return numbers
     }
+}
+
+fun String.countSymbol(symbol: Char): Int {
+    if (this.isEmpty()) return 0
+
+    var count = 0
+
+    for (char in this) {
+        if (char == symbol) {
+            count++
+        }
+    }
+
+    return count
 }
