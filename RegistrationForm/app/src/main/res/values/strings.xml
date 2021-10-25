@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RegistrationForm</string>
+    <string name="registration_tv">Registration</string>
+    <string name="first_name_label_tv">First name</string>
+    <string name="first_name_placeholder">First name</string>
+    <string name="last_name_label_tv">Last name</string>
+    <string name="last_name_placeholder">Last name</string>
+    <string name="email_label_tv">Email</string>
+    <string name="email_placeholder">Email</string>
+    <string name="date_of_birth_label_tv">Date of Birth</string>
+</resources>
